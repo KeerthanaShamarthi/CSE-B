@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Count for a Month</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+
+            
+            border: 1px solid black;
+            padding: 20px;
+            width: 400px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .event-row {
+            margin: 10px 0;
+        }
+        .event-row label {
+            margin-right: 10px;
+        }
+        input[type="number"] {
+            margin-left: 10px;
+            width: 100px;
+        }
+        button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Event count for a month</h2>
+    <div class="event-row">
+        <label for="event1">Birthday party event:</label>
+        <input type="number" id="event1" placeholder="0">
+    </div>
+    <div class="event-row">
+        <label for="event2">Engagement parties event:</label>
+        <input type="number" id="event2" placeholder="0">
+    </div>
+    <div class="event-row">
+        <label for="event3">Corporate event:</label>
+        <input type="number" id="event3" placeholder="0">
+    </div>
+    <div class="event-row">
+        <label for="event4">Social Gathering event:</label>
+        <input type="number" id="event4" placeholder="0">
+    </div>
+    <button id="button" onclick="maxevent()">Submit</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function maxevent() {
+        // Fetch the event counts from the input fields
+        const event1 = parseInt(document.getElementById('event1').value) || 0;
+        const event2 = parseInt(document.getElementById('event2').value) || 0;
+        const event3 = parseInt(document.getElementById('event3').value) || 0;
+        const event4 = parseInt(document.getElementById('event4').value) || 0;
+
+        // Find the maximum event count
+        const maxEvents = Math.max(event1, event2, event3, event4);
+
+        // Prepare the result message according to the highest count
+        let resultMessage = "Maximum number of event occurred in this month is ";
+
+        if (maxEvents === event1) {
+            resultMessage += "Birthday party";
+        } else if (maxEvents === event2) {
+            resultMessage += "Engagement parties";
+        } else if (maxEvents === event3) {
+            resultMessage += "Corporate";
+        } else if (maxEvents === event4) {
+            resultMessage += "Social Gathering";
+        }
+
+        // Display the result
+        document.getElementById('result').innerText = resultMessage;
+    }
+</script>
+
+</body>
+</html>
